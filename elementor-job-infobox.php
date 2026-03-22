@@ -3,7 +3,7 @@
  * Plugin Name: Yosh Tools
  * Plugin URI: https://yosh.tools/yosh-tools
  * Description: A collection of custom Elementor widgets by Yosh. Includes Pricing Card with hourly/monthly toggle.
- * Version: 1.0.5
+ * Version: 1.0.6
  * Author: Jerel Yoshida
  * Author URI: https://yosh.tools
  * Text Domain: yosh-tools
@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('YT_VERSION', '1.0.5');
+define('YT_VERSION', '1.0.6');
 define('YT_FILE', __FILE__);
 define('YT_DIR', plugin_dir_path(__FILE__));
 define('YT_URL', plugin_dir_url(__FILE__));

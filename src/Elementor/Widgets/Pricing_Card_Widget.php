@@ -356,7 +356,7 @@ class Pricing_Card_Widget extends Widget_Base
                 'default' => ['size' => '0.3', 'unit' => 's'],
                 'range' => ['s' => ['min' => 0, 'max' => 2, 'step' => 0.1]],
                 'selectors' => [
-                    '{{WRAPPER}} .yt-pricing-card' => 'transition: transform {{SIZE}}{{UNIT}} ease, box-shadow {{SIZE}}{{UNIT}} ease',
+                    '{{WRAPPER}} .yt-pricing-card' => 'transition: transform {{SIZE}}{{UNIT}} ease, box-shadow {{SIZE}}{{UNIT}} ease, border-color {{SIZE}}{{UNIT}} ease, border-width {{SIZE}}{{UNIT}} ease, border-radius {{SIZE}}{{UNIT}} ease',
                 ],
             ]
         );
@@ -385,6 +385,67 @@ class Pricing_Card_Widget extends Widget_Base
                 'default' => 'yes',
                 'selectors' => [
                     '{{WRAPPER}} .yt-pricing-card:hover' => 'box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'card_hover_border_heading',
+            [
+                'label' => __('Hover Border', 'yosh-tools'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'card_hover_border_color',
+            [
+                'label' => __('Hover Border Color', 'yosh-tools'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#4f46e5',
+                'selectors' => [
+                    '{{WRAPPER}} .yt-pricing-card:hover' => 'border-color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'card_hover_border_width',
+            [
+                'label' => __('Hover Border Width', 'yosh-tools'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px'],
+                'default' => [
+                    'top' => '2',
+                    'right' => '2',
+                    'bottom' => '2',
+                    'left' => '2',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .yt-pricing-card:hover' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'card_hover_border_radius',
+            [
+                'label' => __('Hover Border Radius', 'yosh-tools'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'default' => [
+                    'top' => '16',
+                    'right' => '16',
+                    'bottom' => '16',
+                    'left' => '16',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .yt-pricing-card:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
                 ],
             ]
         );
