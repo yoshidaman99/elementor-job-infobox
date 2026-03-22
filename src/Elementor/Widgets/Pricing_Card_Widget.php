@@ -347,6 +347,48 @@ class Pricing_Card_Widget extends Widget_Base
             ]
         );
 
+        $this->add_control(
+            'card_hover_transition',
+            [
+                'label' => __('Hover Transition (s)', 'yosh-tools'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['s'],
+                'default' => ['size' => '0.3', 'unit' => 's'],
+                'range' => ['s' => ['min' => 0, 'max' => 2, 'step' => 0.1]],
+                'selectors' => [
+                    '{{WRAPPER}} .yt-pricing-card' => 'transition: transform {{SIZE}}{{UNIT}} ease, box-shadow {{SIZE}}{{UNIT}} ease',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'card_hover_transform',
+            [
+                'label' => __('Hover Transform Y', 'yosh-tools'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'default' => ['size' => '-4', 'unit' => 'px'],
+                'range' => ['px' => ['min' => -20, 'max' => 0, 'step' => 1]],
+                'selectors' => [
+                    '{{WRAPPER}} .yt-pricing-card:hover' => 'transform: translateY({{SIZE}}{{UNIT}})',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'card_hover_box_shadow',
+            [
+                'label' => __('Hover Box Shadow', 'yosh-tools'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __('Yes', 'yosh-tools'),
+                'label_off' => __('No', 'yosh-tools'),
+                'default' => 'yes',
+                'selectors' => [
+                    '{{WRAPPER}} .yt-pricing-card:hover' => 'box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
     }
 
