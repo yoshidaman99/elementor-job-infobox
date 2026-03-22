@@ -43,8 +43,6 @@
             }
 
             input.addEventListener('change', applyState);
-
-            applyState();
         });
     }
 
@@ -94,9 +92,9 @@
         equalizeCards();
     }
 
-    if (typeof elementorFrontend !== 'undefined') {
+    if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks) {
         elementorFrontend.hooks.addAction(
-            'frontend/element_ready/yt_pricing_card/widget',
+            'frontend/element_ready/yt_pricing_card',
             function ($scope) {
                 initPricingCards($scope[0]);
                 setTimeout(equalizeCards, 50);
