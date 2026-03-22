@@ -1,6 +1,6 @@
 # Yosh Tools
 
-A collection of custom Elementor widgets by Yosh. Includes Pricing Card with hourly/monthly toggle.
+A collection of custom Elementor widgets by Jerel Yoshida. Includes Pricing Card with hourly/monthly toggle.
 
 ## Features
 
