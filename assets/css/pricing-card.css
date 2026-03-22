@@ -1,0 +1,148 @@
+.yt-pricing-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    padding: 28px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.yt-pricing-title {
+    margin: 0 0 4px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    line-height: 1.3;
+}
+
+.yt-pricing-description {
+    margin: 0;
+    font-size: 13px;
+    color: #666666;
+    line-height: 1.5;
+}
+
+.yt-pricing-toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.yt-pricing-toggle-label {
+    font-size: 13px;
+    color: #666666;
+    user-select: none;
+}
+
+.yt-pricing-toggle-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    opacity: 0;
+}
+
+.yt-pricing-toggle-track {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    background: #cccccc;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.yt-pricing-toggle-input:checked + .yt-pricing-toggle-track {
+    background: #4f46e5;
+}
+
+.yt-pricing-toggle-input:focus-visible + .yt-pricing-toggle-track {
+    outline: 2px solid #4f46e5;
+    outline-offset: 2px;
+}
+
+.yt-pricing-toggle-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+
+.yt-pricing-toggle-input:checked + .yt-pricing-toggle-track .yt-pricing-toggle-thumb {
+    transform: translateX(20px);
+}
+
+.yt-pricing-price-wrap {
+    margin-top: 20px;
+}
+
+.yt-price-display {
+    display: flex;
+    align-items: baseline;
+    color: #dc2626;
+}
+
+.yt-price-currency {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.yt-price-amount {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0 4px;
+}
+
+.yt-price-suffix {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666666;
+}
+
+.yt-price-separator {
+    font-size: 24px;
+    font-weight: 400;
+    color: #666666;
+    margin: 0 4px;
+}
+
+.yt-features-list {
+    list-style: none;
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.yt-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 6px 0;
+}
+
+.yt-feature-check {
+    color: #4f46e5;
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+    line-height: 1.5;
+}
+
+.yt-feature-text {
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.5;
+}
