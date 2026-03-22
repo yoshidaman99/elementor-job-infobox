@@ -58,7 +58,7 @@
             if (!card) return;
 
             var prev = processed.length ? processed[processed.length - 1] : null;
-            if (prev && Math.abs(prev.getBoundingClientRect().top - card.getBoundingClientRect().top) < 5) {
+            if (prev && Math.abs(prev.el.getBoundingClientRect().top - card.getBoundingClientRect().top) < 5) {
                 prev.group.push(card);
             } else {
                 processed.push({ el: card, group: [card] });
