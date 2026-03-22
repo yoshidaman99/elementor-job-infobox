@@ -656,7 +656,7 @@ class Pricing_Card_Widget extends Widget_Base
                 ],
                 'default' => 'left',
                 'selectors' => [
-                    '{{WRAPPER}} .yt-pricing-price-wrap' => 'text-align: {{VALUE}}',
+                    '{{WRAPPER}} .yt-price-display' => 'place-self: {{VALUE}}',
                 ],
             ]
         );

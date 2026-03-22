@@ -4,7 +4,7 @@ Tags: elementor, widget, pricing, pricing card, toggle
 Requires at least: 5.8
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,9 @@ A collection of custom Elementor widgets by Jerel Yoshida. Includes Pricing Card
 3. Add the Pricing Card widget from the Yosh Tools category in Elementor
 
 == Changelog ==
+
+= 1.0.8 =
+* Fixed: Price alignment now uses place-self for flex items
 
 = 1.0.7 =
 * Added: Price alignment control (left, center, right)
