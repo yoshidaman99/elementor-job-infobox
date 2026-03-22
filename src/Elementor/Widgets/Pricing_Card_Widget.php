@@ -644,6 +644,23 @@ class Pricing_Card_Widget extends Widget_Base
             ]
         );
 
+        $this->add_control(
+            'price_alignment',
+            [
+                'label' => __('Price Alignment', 'yosh-tools'),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => ['title' => __('Left', 'yosh-tools'), 'icon' => 'eicon-text-align-left'],
+                    'center' => ['title' => __('Center', 'yosh-tools'), 'icon' => 'eicon-text-align-center'],
+                    'right' => ['title' => __('Right', 'yosh-tools'), 'icon' => 'eicon-text-align-right'],
+                ],
+                'default' => 'left',
+                'selectors' => [
+                    '{{WRAPPER}} .yt-pricing-price-wrap' => 'text-align: {{VALUE}}',
+                ],
+            ]
+        );
+
         $this->add_responsive_control(
             'price_bottom_spacing',
             [
