@@ -38,6 +38,8 @@
                         ? (label.getAttribute('data-hourly-label') || labelText)
                         : (label.getAttribute('data-monthly-label') || labelText);
                 }
+
+                equalizeCards();
             }
 
             input.addEventListener('change', applyState);
@@ -46,18 +48,65 @@
         });
     }
 
+    function equalizeCards() {
+        var rows = document.querySelectorAll('.elementor-widget-yt_pricing_card');
+        if (!rows.length) {
+            rows = document.querySelectorAll('.elementor-widget');
+        }
+
+        var processed = [];
+        rows.forEach(function (row) {
+            var card = row.querySelector('.yt-pricing-card');
+            if (!card) return;
+
+            var prev = processed.length ? processed[processed.length - 1] : null;
+            if (prev && Math.abs(prev.getBoundingClientRect().top - card.getBoundingClientRect().top) < 5) {
+                prev.group.push(card);
+            } else {
+                processed.push({ el: card, group: [card] });
+            }
+        });
+
+        processed.forEach(function (item) {
+            if (item.group.length < 2) return;
+
+            item.group.forEach(function (card) {
+                card.style.minHeight = '0';
+                card.style.height = 'auto';
+            });
+
+            var maxH = 0;
+            item.group.forEach(function (card) {
+                var h = card.offsetHeight;
+                if (h > maxH) maxH = h;
+            });
+
+            item.group.forEach(function (card) {
+                card.style.minHeight = maxH + 'px';
+            });
+        });
+    }
+
+    function initAll() {
+        document.querySelectorAll('.yt-pricing-card').forEach(function (card) {
+            initPricingCards(card);
+        });
+        equalizeCards();
+    }
+
     if (typeof elementorFrontend !== 'undefined') {
         elementorFrontend.hooks.addAction(
             'frontend/element_ready/yt_pricing_card/widget',
             function ($scope) {
                 initPricingCards($scope[0]);
+                setTimeout(equalizeCards, 50);
             }
         );
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-        document.querySelectorAll('.yt-pricing-card').forEach(function (card) {
-            initPricingCards(card);
-        });
+        initAll();
+        window.addEventListener('load', equalizeCards);
+        window.addEventListener('resize', equalizeCards);
     });
 })();

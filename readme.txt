@@ -4,11 +4,11 @@ Tags: elementor, widget, pricing, pricing card, toggle
 Requires at least: 5.8
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-A collection of custom Elementor widgets by Yosh. Includes Pricing Card with hourly/monthly toggle.
+A collection of custom Elementor widgets by Jerel Yoshida. Includes Pricing Card with hourly/monthly toggle.
 
 == Description ==
 
