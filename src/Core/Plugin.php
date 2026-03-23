@@ -35,6 +35,8 @@ class Plugin
         add_filter('get_post_metadata', [$this, 'filter_elementor_data'], 1, 4);
 
         add_action('wp_enqueue_scripts', [$this, 'fix_corrupt_document_data'], 1);
+
+        add_action('elementor/editor/after_enqueue_scripts', [$this, 'enqueue_editor_scripts']);
     }
 
     public function load_textdomain(): void
@@ -68,6 +70,11 @@ class Plugin
 
         $integration = new \Yosh_Tools\Elementor\Elementor_Integration();
         $integration->register_widgets($widgets_manager);
+    }
+
+    public function enqueue_editor_scripts(): void
+    {
+        \Yosh_Tools\Elementor\Elementor_Integration::enqueue_editor_scripts();
     }
 
     private static array $sanitized_cache = [];
@@ -160,6 +167,18 @@ class Plugin
 
             if ($element['elType'] === 'widget' && empty($element['widgetType'])) {
                 continue;
+            }
+
+            if (isset($element['widgetType']) && $element['widgetType'] === 'yt_pricing_card'
+                && isset($element['settings']['features_list']) && is_array($element['settings']['features_list'])) {
+                foreach ($element['settings']['features_list'] as $key => $item) {
+                    if (isset($item['__dynamic__']['feature_text'])) {
+                        unset($element['settings']['features_list'][$key]['__dynamic__']['feature_text']);
+                        if (empty($element['settings']['features_list'][$key]['__dynamic__'])) {
+                            unset($element['settings']['features_list'][$key]['__dynamic__']);
+                        }
+                    }
+                }
             }
 
             if (isset($element['elements']) && is_array($element['elements'])) {
