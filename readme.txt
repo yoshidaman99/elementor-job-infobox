@@ -4,7 +4,7 @@ Tags: elementor, widget, pricing, pricing card, toggle
 Requires at least: 5.8
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.0.15
+Stable tag: 1.0.16
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,7 +17,7 @@ A collection of custom Elementor widgets by Jerel Yoshida. Includes Pricing Card
 = Pricing Card Widget =
 * Interactive hourly/monthly price toggle
 * Customizable title, description, and pricing
-* Repeater-based feature list with checkmarks
+* Textarea-based feature list with checkmarks
 * Full style control (colors, typography, spacing)
 * Keyboard accessible toggle
 * No external dependencies
@@ -29,6 +29,9 @@ A collection of custom Elementor widgets by Jerel Yoshida. Includes Pricing Card
 3. Add the Pricing Card widget from the Yosh Tools category in Elementor
 
 == Changelog ==
+
+= 1.0.16 =
+* Changed: Features list now uses a simple textarea (one feature per line) instead of a repeater
 
 = 1.0.8 =
 * Fixed: Price alignment now uses place-self for flex items

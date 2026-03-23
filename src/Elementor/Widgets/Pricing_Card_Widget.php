@@ -11,7 +11,6 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Repeater;
 
 class Pricing_Card_Widget extends Widget_Base
 {
@@ -239,29 +238,14 @@ class Pricing_Card_Widget extends Widget_Base
             ]
         );
 
-        $repeater = new Repeater();
-
-        $repeater->add_control(
-            'feature_text',
-            [
-                'label' => __('Feature Text', 'yosh-tools'),
-                'type' => Controls_Manager::TEXT,
-                'default' => __('Feature here', 'yosh-tools'),
-            ]
-        );
-
         $this->add_control(
-            'features_list',
+            'features_textarea',
             [
                 'label' => __('Features', 'yosh-tools'),
-                'type' => Controls_Manager::REPEATER,
-                'fields' => $repeater->get_controls(),
-                'default' => [
-                    ['feature_text' => __('160 hours per seat', 'yosh-tools')],
-                    ['feature_text' => __('Dedicated success manager', 'yosh-tools')],
-                    ['feature_text' => __('24/7 global coverage', 'yosh-tools')],
-                ],
-                'title_field' => '{{{ feature_text }}}',
+                'description' => __('Enter one feature per line.', 'yosh-tools'),
+                'type' => Controls_Manager::TEXTAREA,
+                'default' => __("160 hours per seat\nDedicated success manager\n24/7 global coverage", 'yosh-tools'),
+                'rows' => 6,
             ]
         );
 
@@ -757,7 +741,6 @@ class Pricing_Card_Widget extends Widget_Base
 
         $is_hourly = $settings['default_toggle_state'] === 'hourly';
         $toggle_id = 'yt-toggle-' . $this->get_id();
-        $features = $settings['features_list'];
 
         echo '<div class="yt-pricing-card" data-default-toggle="' . esc_attr($is_hourly ? 'hourly' : 'monthly') . '">';
 
@@ -803,15 +786,15 @@ class Pricing_Card_Widget extends Widget_Base
 
         echo '</div>';
 
-        if (!empty($features)) {
+        $features_text = $settings['features_textarea'];
+        if (!empty($features_text)) {
+            $features = preg_split('/\r\n|\r|\n/', $features_text);
+            $features = array_filter(array_map('trim', $features));
             echo '<ul class="yt-features-list">';
             foreach ($features as $feature) {
-                if (empty($feature['feature_text'])) {
-                    continue;
-                }
                 echo '<li class="yt-feature-item">';
                 echo '<span class="yt-feature-check">&#10003;</span>';
-                echo '<span class="yt-feature-text">' . esc_html($feature['feature_text']) . '</span>';
+                echo '<span class="yt-feature-text">' . esc_html($feature) . '</span>';
                 echo '</li>';
             }
             echo '</ul>';
@@ -872,16 +855,15 @@ class Pricing_Card_Widget extends Widget_Base
                 </div>
             </div>
 
-            <# var features = settings.features_list; #>
-            <# if (features && features.length) { #>
+            <# var featuresText = settings.features_textarea; #>
+            <# if (featuresText && featuresText.trim()) { #>
+                <# var featureLines = featuresText.trim().split(/\r\n|\r|\n/).filter(function(line) { return line.trim(); }); #>
                 <ul class="yt-features-list">
-                    <# _.each(features, function(feature) { #>
-                        <# if (feature.feature_text) { #>
-                            <li class="yt-feature-item">
-                                <span class="yt-feature-check">&#10003;</span>
-                                <span class="yt-feature-text">{{{ feature.feature_text }}}</span>
-                            </li>
-                        <# } #>
+                    <# _.each(featureLines, function(line) { #>
+                        <li class="yt-feature-item">
+                            <span class="yt-feature-check">&#10003;</span>
+                            <span class="yt-feature-text">{{{ line.trim() }}}</span>
+                        </li>
                     <# }); #>
                 </ul>
             <# } #>
