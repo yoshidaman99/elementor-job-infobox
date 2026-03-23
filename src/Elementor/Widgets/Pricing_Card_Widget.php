@@ -821,13 +821,17 @@ class Pricing_Card_Widget extends Widget_Base
         echo '</div>';
     }
 
+    protected function render_plain_content()
+    {
+        $this->render();
+    }
+
     protected function content_template()
     {
         ?>
         <#
         var isHourly = settings.default_toggle_state === 'hourly';
         var toggleId = 'yt-toggle-{{{ elementorModel.get( "id" ) }}}';
-        var features = settings.features_list;
         var hourlyLabel = settings.toggle_label_hourly;
         var monthlyLabel = settings.toggle_label_monthly;
         var visibleLabel = isHourly ? hourlyLabel : monthlyLabel;
@@ -869,6 +873,7 @@ class Pricing_Card_Widget extends Widget_Base
                 </div>
             </div>
 
+            <# var features = settings.features_list; #>
             <# if (features && features.length) { #>
                 <ul class="yt-features-list">
                     <# _.each(features, function(feature) { #>
