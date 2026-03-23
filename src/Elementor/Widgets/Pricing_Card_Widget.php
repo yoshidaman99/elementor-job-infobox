@@ -247,7 +247,6 @@ class Pricing_Card_Widget extends Widget_Base
                 'label' => __('Feature Text', 'yosh-tools'),
                 'type' => Controls_Manager::TEXT,
                 'default' => __('Feature here', 'yosh-tools'),
-                'dynamic' => ['active' => true],
             ]
         );
 
