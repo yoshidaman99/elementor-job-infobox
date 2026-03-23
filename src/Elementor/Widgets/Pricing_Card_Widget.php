@@ -821,7 +821,7 @@ class Pricing_Card_Widget extends Widget_Base
         echo '</div>';
     }
 
-    protected function render_plain_content()
+    public function render_plain_content()
     {
         $this->render();
     }
