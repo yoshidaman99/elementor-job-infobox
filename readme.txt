@@ -4,7 +4,7 @@ Tags: elementor, widget, pricing, pricing card, toggle
 Requires at least: 5.8
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.0.16
+Stable tag: 1.0.17
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,9 @@ A collection of custom Elementor widgets by Jerel Yoshida. Includes Pricing Card
 3. Add the Pricing Card widget from the Yosh Tools category in Elementor
 
 == Changelog ==
+
+= 1.0.17 =
+* Fixed: Added aria-label and screen-reader text to pricing toggle for accessibility
 
 = 1.0.16 =
 * Changed: Features list now uses a simple textarea (one feature per line) instead of a repeater

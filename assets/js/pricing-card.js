@@ -34,9 +34,11 @@
                     monthlyDisplay.style.display = isChecked ? 'none' : 'flex';
                 }
                 if (label && labelText) {
-                    label.textContent = isChecked
+                    var newLabel = isChecked
                         ? (label.getAttribute('data-hourly-label') || labelText)
                         : (label.getAttribute('data-monthly-label') || labelText);
+                    label.textContent = newLabel;
+                    input.setAttribute('aria-label', 'Pricing: ' + newLabel + ' selected');
                 }
 
                 equalizeCards();

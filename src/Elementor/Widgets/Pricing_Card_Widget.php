@@ -755,11 +755,16 @@ class Pricing_Card_Widget extends Widget_Base
         $hourly_label = esc_attr($settings['toggle_label_hourly']);
         $monthly_label = esc_attr($settings['toggle_label_monthly']);
         $visible_label = $is_hourly ? $hourly_label : $monthly_label;
+        $aria_label = sprintf(
+            __('Pricing: %s selected', 'yosh-tools'),
+            $is_hourly ? $hourly_label : $monthly_label
+        );
 
         echo '<div class="yt-pricing-toggle-row">';
         echo '<span class="yt-pricing-toggle-label" data-hourly-label="' . $hourly_label . '" data-monthly-label="' . $monthly_label . '">' . esc_html($visible_label) . '</span>';
-        echo '<input type="checkbox" id="' . esc_attr($toggle_id) . '" class="yt-pricing-toggle-input"' . checked($is_hourly, true, false) . '>';
+        echo '<input type="checkbox" id="' . esc_attr($toggle_id) . '" class="yt-pricing-toggle-input" aria-label="' . esc_attr($aria_label) . '"' . checked($is_hourly, true, false) . '>';
         echo '<label for="' . esc_attr($toggle_id) . '" class="yt-pricing-toggle-track">';
+        echo '<span class="screen-reader-text">' . esc_html__('Toggle between hourly and monthly pricing', 'yosh-tools') . '</span>';
         echo '<span class="yt-pricing-toggle-thumb"></span>';
         echo '</label>';
         echo '</div>';
@@ -833,8 +838,9 @@ class Pricing_Card_Widget extends Widget_Base
 
             <div class="yt-pricing-toggle-row">
                 <span class="yt-pricing-toggle-label" data-hourly-label="{{ hourlyLabel }}" data-monthly-label="{{ monthlyLabel }}">{{{ visibleLabel }}}</span>
-                <input type="checkbox" id="{{ toggleId }}" class="yt-pricing-toggle-input" {{{ isHourly ? 'checked' : '' }}}>
+                <input type="checkbox" id="{{ toggleId }}" class="yt-pricing-toggle-input" aria-label="Pricing: {{{ visibleLabel }}} selected" {{{ isHourly ? 'checked' : '' }}}>
                 <label for="{{ toggleId }}" class="yt-pricing-toggle-track">
+                    <span class="screen-reader-text">Toggle between hourly and monthly pricing</span>
                     <span class="yt-pricing-toggle-thumb"></span>
                 </label>
             </div>
